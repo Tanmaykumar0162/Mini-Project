@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real Time Messaging Web APP</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>InfoXchange</h1>
+
+    <div class="nm">
+    <input type="text" name="" id="usernm" placeholder="Enter your name" class="nm">
+    <button onclick="myFunction()" class="nm btnnm">Use it as your display name</button>
+  </div>
+
+    <input type="text" id="message" placeholder="Enter message here" />
+    <button id="send">Send</button>
+    <div id="messages"></div>
+    <div id="users"></div>
+  
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io('http://localhost:9000');
+      const messagesContainer = document.getElementById('messages');
+      const usersContainer = document.getElementById('users');
+  
+      function myFunction() {
+        const username = document.getElementById("usernm").value;
+        console.log(username);
+        socket.emit('user-join', username);
+      }
+      //const username = document.getElementById("usernm").value;
+      
+  
+      socket.on('message', ({ message, username }) => {
+        const messageElement = document.createElement('div');
+        messageElement.textContent = `${username}: ${message}`;
+        messagesContainer.appendChild(messageElement);
+      });
+  
+      socket.on('user-joined', (username) => {
+        const userElement = document.createElement('div');
+        userElement.textContent = `${username} joined`;
+        usersContainer.appendChild(userElement);
+      });
+  
+      socket.on('user-left', (username) => {
+        const userElement = document.createElement('div');
+        userElement.textContent = `${username} left`;
+        usersContainer.appendChild(userElement);
+      });
+  
+      const sendButton = document.getElementById('send');
+      sendButton.addEventListener('click', () => {
+        const messageInput = document.getElementById('message');
+        socket.emit('user-message', messageInput.value);
+        messageInput.value = '';
+      });
+    </script>
+  </body>
+  </html>
+  

@@ -1,0 +1,81 @@
+/* style.css */
+
+*{
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#messages {
+  width: 80%;
+  height: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  overflow-y: scroll;
+}
+
+#users {
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+#message {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#send {
+  background-color: #4CAF50;
+  border: 2px solid white;
+  color: white;
+  padding: 10px 20px;
+  /* border: none; */
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 2rem;
+}
+
+#usernm{
+  padding: 10px 20px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.message {
+  margin-bottom: 5px;
+}
+
+.nm{
+  display: inline-block;
+  margin: .5rem;
+}
+
+.btnnm{
+  padding: .5rem;
+  color: white;
+  background-color: #2b6fb7;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
+.btnnm:hover{
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+#send:hover{
+  border: 2px solid black;
+  cursor: pointer;
+
+}
