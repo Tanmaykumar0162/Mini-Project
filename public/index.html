@@ -9,17 +9,23 @@
   </head>
   <body>
     <h1>InfoXchange</h1>
-
+    <div class="main">
     <div class="nm">
-    <input type="text" name="" id="usernm" placeholder="Enter your name" class="nm">
+    <input type="text" name="" id="usernm" placeholder="Enter your name" class="nm" required>
     <button onclick="myFunction()" class="nm btnnm">Use it as your display name</button>
   </div>
 
-    <input type="text" id="message" placeholder="Enter message here" />
-    <button id="send">Send</button>
-    <div id="messages"></div>
+    <!-- <input type="text" id="message" placeholder="Enter message here" required />
+    <button id="send">Send</button> -->
+    <div id="messages">
+      <p style="font-weight: bolder; color:white;">Messages:</p>
+      <div class="send">
+      <input type="text" id="message" placeholder="Enter message here" required />
+      <button id="send">Send</button>
+    </div>
+    </div>
     <div id="users"></div>
-  
+  </div>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       const socket = io('http://localhost:9000');
